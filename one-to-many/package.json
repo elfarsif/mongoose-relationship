@@ -1,0 +1,14 @@
+{
+  "name": "one-to-many",
+  "version": "0.0.0",
+  "description": "one-to-many-template for myself",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frank-Norris El Farsi",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.2.0"
+  }
+}
