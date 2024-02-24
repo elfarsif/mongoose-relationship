@@ -26,6 +26,18 @@ const createImage = function(blogId, image) {
   );
 };
 
+const createComment = function(blogId, comment) {
+  return db.Comment.create(comment).then(docComment => {
+    console.log("\n>> Created Comment:\n", docComment);
+
+    return db.Blog.findByIdAndUpdate(
+      blogId,
+      { $push: { comments: docComment._id } },
+      { new: true, useFindAndModify: false }
+    );
+  });
+};
+
 const run = async function() {
   var blog = await createBlog({
     title: "Blog #1",
@@ -47,6 +59,22 @@ const run = async function() {
     createdAt: Date.now()
   });
   console.log("\n>> Blog:\n", blog);
+
+  blog = await createComment(blog._id, {
+    username: "jack",
+    text: "This is a great blog.",
+    createdAt: Date.now()
+  });
+  console.log("\n>> Blog:\n", blog);
+
+  blog = await createComment(blog._id, {
+    username: "mary",
+    text: "Thank you, it helps me alot.",
+    createdAt: Date.now()
+  });
+  console.log("\n>> Blog:\n", blog);
+
+
 };
 
 mongoose
