@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This app is a mongoose blog app that employs One-to-Many relationships, it can be used as a template for personal projects. It covers different scenarios, approaches, and considerations for designing efficient data structures.
+This is a mongoose blog app that employs One-to-Many relationships, it can be used as a template for personal projects. It covers different scenarios, approaches, and considerations for designing efficient data structures.
 
 See Installation at bottom of page
 
