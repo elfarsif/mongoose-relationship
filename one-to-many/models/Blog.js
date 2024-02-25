@@ -11,7 +11,11 @@ const Blog = mongoose.model(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment"
       }
-    ]
+    ],
+     category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category"
+    }
   })
 );
 

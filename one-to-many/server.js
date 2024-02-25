@@ -38,6 +38,32 @@ const createComment = function(blogId, comment) {
   });
 };
 
+const createCategory = function(category) {
+  return db.Category.create(category).then(docCategory => {
+    console.log("\n>> Created Category:\n", docCategory);
+    return docCategory;
+  });
+};
+
+const addBlogToCategory = function(blogId, categoryId) {
+  return db.Blog.findByIdAndUpdate(
+    blogId,
+    { category: categoryId },
+    { new: true, useFindAndModify: false }
+  );
+};
+
+const getBlogWithPopulate = function(id) {
+  return db.Blog.findById(id).populate("comments","-_id -__v");
+};
+
+const getBlogsInCategory = function(categoryId) {
+  return db.Blog.find({ category: categoryId })
+    .populate("category", "name -_id")
+    .select("-comments -images -__v");
+};
+
+
 const run = async function() {
   var blog = await createBlog({
     title: "Blog #1",
@@ -73,7 +99,25 @@ const run = async function() {
     createdAt: Date.now()
   });
   console.log("\n>> Blog:\n", blog);
+  blog = await getBlogWithPopulate(blog._id);
+  console.log("\n>> populated Blog:\n", blog);
+  
+  var category = await createCategory({
+    name: "Node.js",
+    description: "Node.js blog"
+  });
 
+  await addBlogToCategory(blog._id, category._id);
+
+  var newBlog = await createBlog({
+    title: "blog #2",
+    author: "Frank Norris El Farsi"
+  });
+
+  await addBlogToCategory(newBlog._id, category._id);
+
+  var blogs = await getBlogsInCategory(category._id);
+  console.log("\n>> all Blog in Cagetory:\n", blogs);
 
 };
 
