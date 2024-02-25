@@ -4,22 +4,7 @@
 
 This app is a mongoose blog app that employs One-to-Many relationships, it can be used as a template for personal projects. It covers different scenarios, approaches, and considerations for designing efficient data structures.
 
-## Project Setup/Installation:
-
-```bash
-# 1. Clone repository to local folder
-git clone [repository_url] [local_folder]
-
-# 2. Install dependencies
-cd [local_folder]
-npm install
-
-# 3. Ensure MongoDB is installed (Preferably with Compass or Atlas)
-
-# 4. Update database variables in server.js
-
-# 5. Run the app
-node server.js
+See Installation at bottom of page
 
 ### Understanding One-to-Many Relationships
 
@@ -60,3 +45,20 @@ To implement one-to-many relationships in a Node.js app using Mongoose, follow t
 ## Conclusion
 
 Modeling one-to-many relationships in MongoDB requires careful consideration of various factors, including relationship types, data access patterns, and data cohesion. By understanding these aspects and choosing the appropriate data model, you can design efficient and scalable database structures for your applications.
+
+## Project Setup/Installation:
+
+```bash
+# 1. Clone repository to local folder
+git clone [repository_url] [local_folder]
+
+# 2. Install dependencies
+cd [local_folder]
+npm install
+
+# 3. Ensure MongoDB is installed (Preferably with Compass or Atlas)
+
+# 4. Update database variables in server.js
+
+# 5. Run the app
+node server.js
